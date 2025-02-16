@@ -1,0 +1,783 @@
+body {
+  background-color: #ffedda;
+}
+hr {
+  margin-top: 20px;
+  padding-top: 3px;
+  opacity: 55%;
+}
+.icon-item-kosong {
+  font-size: 100px;
+}
+.icon-menu-kategori {
+  color: #f24e1e;
+  font-size: 25px;
+}
+.icon-tambah-gambar {
+  color: #f24e1e;
+  font-size: 50px;
+}
+.icon-keranjang {
+  color: #f24e1e;
+  font-size: 40px;
+}
+.icon-rating {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/solar/star-bold.svg?color=%23f24e1e");
+  width: 14px;
+  height: 15px;
+  background-repeat: no-repeat;
+  background-size: 100% 120%;
+}
+.icon-plus {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/ei/plus.svg");
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.icon-minus {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/ei/minus.svg");
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.icon-profile {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/gg/profile.svg?color=%23ec7905");
+  width: 120px;
+  height: 120px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.icon-profile-admin1 {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/gg/profile.svg?color=%23ec7905");
+  width: 80px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.icon-profile-admin2 {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/gg/profile.svg?color=%23ec7905");
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.icon-kategori-produk {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/iconamoon/category-light.svg?color=%23f24e1e");
+  width: 18.5px;
+  height: 22px;
+  background-repeat: no-repeat;
+  background-size: 100% 140%;
+}
+.icon-dashboard {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/iconamoon/category-light.svg?color=%23f24e1e");
+  width: 22px;
+  height: 22px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.ic-kategori {
+  background-image: url("https://api.iconify.design/iconamoon/category-light.svg?color=%23f24e1e");
+}
+.ic-produk {
+  background-image: url("https://api.iconify.design/fluent/food-16-regular.svg?color=%23f24e1e");
+}
+.ic-ulasan {
+  background-image: url("https://api.iconify.design/fluent/chat-20-regular.svg?color=%23f24e1e");
+}
+.ic-pembayaran {
+  background-image: url("https://api.iconify.design/uil/transaction.svg?color=%23f24e1e");
+}
+.ic-map {
+  background-image: url("https://api.iconify.design/majesticons/map-marker-area-line.svg?color=%23f24e1e");
+}
+.ic-uang {
+  background-image: url("https://api.iconify.design/fluent-emoji-high-contrast/money-bag.svg?color=%23f24e1e");
+}
+.ic-bantuan {
+  background-image: url("https://api.iconify.design/material-symbols/help-outline.svg?color=%23f24e1e");
+}
+.ic-riwayat {
+  background-image: url("https://api.iconify.design/ic/baseline-history.svg?color=%23f24e1e");
+}
+.icon-produk {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/fluent/food-16-regular.svg?color=%23f24e1e");
+  width: 20px;
+  height: 22px;
+  background-repeat: no-repeat;
+  background-size: 100% 140%;
+}
+.icon-produk-2 {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/fluent/food-16-regular.svg?color=%23f24e1e");
+  width: 22px;
+  height: 22px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.icon-ulasan {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/fluent/chat-20-regular.svg?color=%23f24e1e");
+  width: 20px;
+  height: 22px;
+  background-repeat: no-repeat;
+  background-size: 100% 128%;
+}
+.icon-pembayaran {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/uil/transaction.svg?color=%23f24e1e");
+  width: 20px;
+  height: 22px;
+  background-repeat: no-repeat;
+  background-size: 100% 128%;
+}
+.icon-map {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/majesticons/map-marker-area-line.svg?color=%23f24e1e");
+  width: 20px;
+  height: 22px;
+  background-repeat: no-repeat;
+  background-size: 100% 128%;
+}
+.icon-uang {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/fluent-emoji-high-contrast/money-bag.svg?color=%23f24e1e");
+  width: 21px;
+  height: 22px;
+  background-repeat: no-repeat;
+  background-size: 100% 117%;
+}
+.icon-bantuan {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/material-symbols/help-outline.svg?color=%23f24e1e");
+  width: 21px;
+  height: 22px;
+  background-repeat: no-repeat;
+  background-size: 100% 125%;
+}
+.icon-riwayat {
+  display: inline-block;
+  background-image: url("https://api.iconify.design/ic/baseline-history.svg?color=%23f24e1e");
+  width: 21px;
+  height: 22px;
+  background-repeat: no-repeat;
+  background-size: 100% 125%;
+}
+.icon-panah-kanan,
+.icon-panah-kiri {
+  position: absolute;
+  color: #ec7905;
+  font-size: 35px;
+  padding: 10px 10px 30px 10px;
+  cursor: pointer;
+}
+.icon-panah-kiri {
+  left: 0;
+  background: linear-gradient(to left, transparent, #ffedda 80%);
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+.icon-panah-kanan {
+  right: 0;
+  background: linear-gradient(to right, transparent, #ffedda 80%);
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.konten-web {
+  min-height: 500px;
+}
+.judul-bantuan hr {
+  margin-top: 10px;
+  padding-top: 2px;
+  opacity: 30%;
+}
+.accordion-button {
+  background-color: #f7dec2;
+}
+.modal-body hr {
+  margin-top: 10px;
+  padding-top: 2px;
+  opacity: 30%;
+}
+.card-body hr {
+  margin-top: 10px;
+  padding-top: 2px;
+  opacity: 30%;
+}
+.navlink-depot-istimewa {
+  padding: 32px 86px;
+  background-color: #ec7905;
+}
+.navlink-konten {
+  padding-left: 65px;
+  padding-right: 65px;
+}
+.navlink-konten a {
+  font-size: 17px;
+}
+.judul-bantuan {
+  margin-top: 130px;
+}
+.card-profile {
+  margin-top: 135px;
+}
+section {
+  position: relative;
+  margin: 0 80px;
+  transition: 0.5s ease;
+}
+.main-container {
+  position: relative;
+}
+.tab-nav-bar {
+  position: relative;
+  margin: 125px 0px 20px 0px;
+}
+.tab-navigation {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: fit-content;
+  /* margin: 0 auto; */
+}
+.tab-menu {
+  list-style: none;
+  max-width: 1080px;
+  padding: 8px 0px 8px 30px;
+  white-space: nowrap;
+  border-radius: 50px;
+  /* border-bottom: 1px solid #f7dec2; */
+  background: #f7dec2;
+  overflow-x: auto;
+  user-select: none;
+  scroll-behavior: smooth;
+}
+.tab-menu.dragging {
+  scroll-behavior: unset;
+  cursor: grab;
+}
+.tab-menu::-webkit-scrollbar {
+  display: none;
+}
+.tab-menu a {
+  display: inline-block;
+  padding: 10px 70px 10px 55px;
+  text-decoration: none;
+  color: #3b3b3b;
+}
+.tab-btn {
+  display: inline-block;
+  /* padding: 10px 70px 10px 55px; */
+  cursor: pointer;
+  user-select: none;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+.tab-menu.dragging.tab-btn {
+  pointer-events: none;
+}
+.tab-btn-active {
+  background: #ffedda;
+}
+.tab-btn:hover {
+  background: #ffedda;
+}
+.keranjang-container {
+  display: flex;
+}
+.counter-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.counter-container span {
+  user-select: none;
+  position: absolute;
+  background: white;
+  color: #f24e1e;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1rem;
+  border-radius: 50%;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0.2rem;
+  right: 0.1rem;
+}
+.link-menu {
+  margin-top: 125px;
+}
+.ket-buatakun {
+  margin-top: 135px;
+}
+.link-menu hr {
+  margin-top: 15px;
+}
+.judul-tentangkami {
+  margin-top: 120px;
+}
+.hal-profile {
+  padding-top: 130px;
+}
+.link-menu a {
+  text-decoration: none;
+  color: #3b3b3b;
+}
+.link-menu a:hover {
+  color: #ec7905;
+}
+.container-carousel {
+  margin-top: 130px;
+}
+.c-item {
+  height: 480px;
+}
+.c-img {
+  height: 100%;
+  /* object-fit: cover; */
+  filter: brightness(0.75);
+}
+.color-secondary {
+  color: #495057;
+}
+.color-third {
+  color: #ec7905;
+}
+.color-forth {
+  color: #565656;
+}
+.color-fivth {
+  color: #f69c3f;
+}
+.color-sixth {
+  color: #68d426;
+}
+.color-seventh {
+  color: #4fb511;
+}
+.color-eight {
+  color: #f24e1e;
+}
+.nav-link:hover {
+  color: #ec7905 !important;
+}
+.color-click {
+  color: #ec7905;
+}
+.dropdown-item1 {
+  display: inline-block;
+  text-decoration: none;
+  width: 100%;
+  color: #3b3b3b;
+  font-size: 17px;
+  padding: 5px 15px;
+}
+.dropdown-item1:hover {
+  background-color: #ffd09c;
+  color: #3b3b3b;
+}
+.vr {
+  width: 2px;
+  opacity: 75%;
+}
+.icon-pelanggan {
+  margin-left: 50px;
+}
+
+.secondary-border {
+  /* border-color: #f24e1e; */
+  border: 3px solid #ec7905;
+}
+
+.ulasan-pelanggan {
+  max-height: 450px;
+  overflow: auto;
+}
+.rincian-ulasan-pelanggan {
+  max-height: 500px;
+  overflow: auto;
+}
+.card-primary {
+  background-color: #f1ba7b;
+}
+.card-secondary {
+  background-color: #f7dec2;
+}
+.card-shape {
+  border-radius: 15px;
+}
+.menu-rating {
+  background-color: white;
+  width: 100px;
+  border-radius: 15px;
+}
+.color-primary-button {
+  background-color: #ec7905;
+  color: white;
+}
+.color-secondary-button {
+  background-color: white;
+  color: #ec7905;
+}
+.color-Third-button {
+  background-color: #d9d9d9;
+  color: #868686;
+}
+.color-primary-button:hover {
+  background-color: #ff9b36;
+  color: white;
+}
+.color-secondary-button:hover {
+  background-color: #d9d9d9;
+  color: #ec7905;
+}
+.card-body a {
+  text-decoration: none;
+}
+.list-profile a {
+  text-decoration: none;
+  font-size: 18px;
+}
+.list-profile a:hover {
+  color: #565656;
+}
+.modal-body a:hover {
+  color: #565656;
+}
+.footer {
+  background-color: #555555;
+  margin-top: 60px;
+}
+.footer h5 {
+  color: white;
+}
+.footer a,
+i {
+  text-decoration: none;
+  color: #ababab;
+}
+
+.content-footer p {
+  margin-top: -12px;
+}
+.copyright {
+  background-color: #1c1c1c;
+}
+.harga {
+  font-size: 20px;
+}
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: var(--bs-dark);
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: 0.5s;
+  border: 1px solid var(--bs-secondary);
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: #ec7905;
+  color: white;
+  border: 1px solid var(--bs-secondary);
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ec7905;
+  color: white;
+}
+
+.rating {
+  transform: translate(-50%, -50%);
+}
+.rating input {
+  display: none;
+}
+.rating > label::before {
+  content: "\f005";
+  display: inline-block;
+  margin: 50px 5px 5px;
+  font-family: FontAwesome;
+  font-size: 1.2em;
+}
+.rating > .half::before {
+  content: "\f089";
+  position: absolute;
+}
+.rating > label {
+  float: right;
+  text-align: center;
+  color: #bfbfbf;
+  cursor: pointer;
+}
+.rating > [id^="star"]:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #f24e1e;
+}
+
+/* .rating[id^="star"]:checked+label:hover,
+.rating>[id^="star"]:checked~label:hover,
+.rating>label:hover~[id^="star"]:checked~label,
+.rating>[id^="star"]:checked~label:hover~label{
+  color: ;
+} */
+
+.counter {
+  height: 100%;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+}
+
+.counter i {
+  font-size: 60px;
+  margin-bottom: 25px;
+}
+
+.counter h4 {
+  color: var(--bs-primary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.counter h1 {
+  margin-bottom: 0;
+}
+
+.tanggapan-pengelola {
+  background-color: #ffedda;
+  padding-top: 13px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.tanggapan-pengelola p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tanggapan-pengelola .expanded {
+  white-space: normal; /* Tampilkan seluruh teks */
+  overflow: visible; /* Perlihatkan teks berlebih */
+}
+
+.toggle-tanggapan {
+  transition: transform 0.3s ease; /* Animasi untuk transisi rotasi */
+}
+
+.expanded .toggle-tanggapan {
+  transform: rotate(180deg); /* Putar panah ke atas */
+}
+
+.tambah-gambar-ulasan {
+  cursor: pointer;
+}
+
+.catatan-produk{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.catatan-pelanggan{
+  background-color: #e8e8e8;
+  padding-top: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.catatan-pelanggan p{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.catatan-pelanggan .expanded {
+  white-space: normal; /* Tampilkan seluruh teks */
+  overflow: visible; /* Perlihatkan teks berlebih */
+}
+
+.toggle-catatan {
+  transition: transform 0.3s ease; /* Animasi untuk transisi rotasi */
+}
+
+.expanded .toggle-catatan {
+  transform: rotate(180deg); /* Putar panah ke atas */
+}
+
+#image-container img {
+  position: relative;
+  max-width: 150px;
+  max-height: 150px; /*Batasi tinggi maksimum gambar */
+  border-radius: 5px; /* (Opsional) Tambahkan sudut melengkung */
+  object-fit: cover; /* Sesuaikan gambar agar pas dengan area kontainer */
+  margin-bottom: 20px;
+  display: block;
+}
+
+.btn-close.close-overlay {
+  top: -30px; /* Posisikan tombol sedikit di luar sudut */
+  right: -65px; /* Sesuaikan posisi di sudut kanan atas */
+  background-color: white; /* Warna latar belakang tombol */
+  border: 2px solid #6c757d; /* Border agar menyatu dengan elemen */
+  border-color: #495057;
+  border-radius: 50%; /* Membuat tombol berbentuk lingkaran */
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan jika diperlukan */
+  opacity: 1;
+}
+
+.btn-close.close-overlay:hover {
+  background-color: #ffedda; /* Warna hover untuk efek */
+}
+
+@media screen and (max-width: 1600px) {
+  .navlink-konten a {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .navlink-konten {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+  .gambar-depot-utama {
+    width: 500px;
+  }
+  .gambar-produk {
+    width: 400px;
+  }
+  .rincian-riwayat p {
+    font-size: 14px;
+  }
+  .rincian-riwayat li {
+    font-size: 14px;
+  }
+  .riwayat-pemb p {
+    font-size: 15.5px;
+  }
+  .riwayat-pemb li {
+    font-size: 15.5px;
+  }
+}
+@media screen and (max-width: 1300px) {
+  .navlink-konten {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .rincian-riwayat p {
+    font-size: 12.8px;
+  }
+  .rincian-riwayat li {
+    font-size: 12.8px;
+  }
+  .rating {
+    transform: translate(-40%, -50%);
+  }
+}
+@media screen and (max-width: 1200px) {
+  h2 {
+    font-size: 25px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 18px;
+  }
+  h5 {
+    font-size: 15px;
+  }
+  .navlink-depot-istimewa {
+    padding: 35px 45px;
+  }
+  .navlink-konten {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+  .navlink-konten a {
+    font-size: 13px;
+  }
+  .gambar-depot-utama {
+    width: 400px;
+  }
+  .carousel-item {
+    height: 350px;
+  }
+  .gambar-tentang-kami {
+    height: 280px;
+  }
+  .gambar-produk {
+    width: 350px;
+  }
+  .icon-minus {
+    width: 20px;
+    height: 20px;
+  }
+  .icon-plus {
+    width: 20px;
+    height: 20px;
+  }
+  .rincian-riwayat p {
+    font-size: 16px;
+  }
+  .rincian-riwayat li {
+    font-size: 16px;
+  }
+  .metod-pembayaran {
+    margin-bottom: 50px;
+  }
+  .rating {
+    transform: translate(-28%, -50%);
+  }
+}
+@media screen and (max-width: 1000px) {
+  .rating {
+    transform: translate(-47%, -50%);
+  }
+}
+@media screen and (max-width: 800px) {
+  .rating {
+    transform: translate(-24%, -50%);
+  }
+}
+@media screen and (max-width: 600px) {
+  .rating {
+    transform: translate(-68%, -50%);
+  }
+}
+@media screen and (max-width: 500px) {
+  .rating {
+    transform: translate(-57%, -50%);
+  }
+}
+@media screen and (max-width: 450px) {
+  .gambar-depot-utama {
+    width: 280px;
+  }
+  .gambar-produk {
+    width: 200px;
+  }
+  .rating {
+    transform: translate(-45%, -50%);
+  }
+}
