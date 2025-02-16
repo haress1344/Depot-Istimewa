@@ -118,7 +118,7 @@ class authModel
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
             $mail->Username   = 'harisdwinuralmaas@gmail.com';                     //SMTP username
-            $mail->Password   = 'lwaw anqa doeq etyb';                               //SMTP password
+            $mail->Password   = 'secret';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
@@ -131,7 +131,7 @@ class authModel
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->Subject = 'Verifikasi Akun Depot Onde - Onde Istimewa';
             $mail->Body    = 'Hai, ' . $nama . ' terimakasih sudah mendaftar akun di depot Onde - Onde Istimewa, <br> silkan VERIFIKASI akun anda!' . '<a
-            href="http://localhost:8080/Depot-Istimewa-Skripsi-Fix1/index.php?page=auth&aksi=verifakun&code=' . $codeVerif . '"> Verifikasi</a>';
+            href="http://localhost:8080/Depot-Istimewa-Skripsi-Fix2/index.php?page=auth&aksi=verifakun&code=' . $codeVerif . '"> Verifikasi</a>';
 
             //jika email dikirim
             if ($mail->send()) {

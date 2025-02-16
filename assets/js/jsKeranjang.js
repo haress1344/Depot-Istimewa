@@ -42,7 +42,7 @@
         } else {
           $.ajax({
             type: "POST",
-            url: "/Depot-Istimewa-Skripsi-Fix1/index.php?page=keranjang&aksi=hapusItem",
+            url: "/Depot-Istimewa-Skripsi-Fix2/index.php?page=keranjang&aksi=hapusItem",
             data: {
               id_produk: itemId,
             },
@@ -55,7 +55,7 @@
       } else {
         $.ajax({
           type: "POST",
-          url: "/Depot-Istimewa-Skripsi-Fix1/index.php?page=keranjang&aksi=tambahItem",
+          url: "/Depot-Istimewa-Skripsi-Fix2/index.php?page=keranjang&aksi=tambahItem",
           data: {
             item: itemId,
             // keranjang: keranjangId,

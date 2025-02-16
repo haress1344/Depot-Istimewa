@@ -7,7 +7,7 @@
 
 // require_once dirname(__FILE__) . '/../Midtrans.php';
 \Midtrans\Config::$isProduction = false;
-\Midtrans\Config::$serverKey = 'SB-Mid-server-bnEgztv_tgUeJoCLbXsJjkUk';
+\Midtrans\Config::$serverKey = 'secret';
 
 $db= new koneksi();
 $db= $db->konek();

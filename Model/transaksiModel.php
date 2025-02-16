@@ -403,7 +403,7 @@ class transaksiModel
         $status_transaksi = 0;
 
         // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = 'SB-Mid-server-bnEgztv_tgUeJoCLbXsJjkUk';
+        \Midtrans\Config::$serverKey = 'secret';
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
         // Set sanitization on (default)
