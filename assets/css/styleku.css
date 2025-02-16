@@ -371,6 +371,9 @@ section {
 .color-eight {
   color: #f24e1e;
 }
+.color-ninth {
+  color: #6c757d;
+}
 .nav-link:hover {
   color: #ec7905 !important;
 }
@@ -589,20 +592,20 @@ i {
   cursor: pointer;
 }
 
-.catatan-produk{
+.catatan-produk {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.catatan-pelanggan{
+.catatan-pelanggan {
   background-color: #e8e8e8;
   padding-top: 10px;
   white-space: nowrap;
   cursor: pointer;
 }
 
-.catatan-pelanggan p{
+.catatan-pelanggan p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -648,6 +651,14 @@ i {
 
 .btn-close.close-overlay:hover {
   background-color: #ffedda; /* Warna hover untuk efek */
+}
+
+.card-riwayat:hover {
+  border: 2px solid;
+  border-color: #ffba89;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(196, 130, 8, 0.25);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 @media screen and (max-width: 1600px) {

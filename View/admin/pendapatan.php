@@ -94,6 +94,12 @@ $format = new transaksiController();
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a class="sidebar-link" href="index.php?page=pengiriman&aksi=radiusPengiriman">
+                            <i class="color-third" data-feather="map-pin"></i>
+                            <strong>Radius Pengiriman</strong>
+                        </a>
+                    </li>
+                    <!-- <li class="sidebar-item">
                         <a class="sidebar-link" href="index.html">
                             <i class="icon-bantuan"></i>
                             <strong>Kelola Bantuan</strong>
@@ -104,7 +110,7 @@ $format = new transaksiController();
                             <i class="icon-riwayat"></i>
                             <strong>Riwayat Pembaruan</strong>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </nav>
@@ -233,7 +239,7 @@ $format = new transaksiController();
                                         foreach ($rowsData as $row) : ?>
                                             <tr>
                                                 <td class="d-none d-xl-table-cell"><?= $i ?></td>
-                                                <td><?= $row["tgl_transaksi"] ?></td>
+                                                <td><?= $format->formatTgl($row["tgl_pemesanan"]) ?></td>
                                                 <td>Rp <?= $format->formatHarga($row["pendapatan"]) ?></td>
                                             </tr>
                                         <?php $i++;

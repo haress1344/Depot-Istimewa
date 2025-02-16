@@ -42,7 +42,7 @@
         } else {
           $.ajax({
             type: "POST",
-            url: "/Depot-Istimewa-Skripsi-Fix2/index.php?page=keranjang&aksi=hapusItem",
+            url: "/Belajar-PHP-Depot-Istimewa-Skripsi-Fix2/index.php?page=keranjang&aksi=hapusItem",
             data: {
               id_produk: itemId,
             },
@@ -128,8 +128,8 @@
       }
     });
 
+  //script untuk modal request
   var reqModal = document.getElementById("reqModal");
-
   // Tambahkan event listener saat modal akan ditampilkan
   reqModal.addEventListener("show.bs.modal", function (event) {
     // Tombol atau elemen yang memicu modal
@@ -142,6 +142,7 @@
     // Masukkan nilai itemId ke dalam input hidden
     var hiddenInput = reqModal.querySelector('input[name="id_produk"]');
     hiddenInput.value = itemId;
+    // console.log("Hidden Input Value:", hiddenInput.value);
 
     // Masukkan nilai itemCatatan ke dalam textarea
     var textarea = reqModal.querySelector('textarea[name="catatan"]');
@@ -160,5 +161,38 @@
       window.scrollTo(0, parseInt(scrollPosition, 10));
       localStorage.removeItem("scrollPosition"); // Hapus setelah digunakan
     }
+  });
+
+  // <!-- script untuk mengatur tgl permintaan -->
+  var tglModal = document.getElementById("tglModal");
+  // Tambahkan event listener saat modal akan ditampilkan
+  tglModal.addEventListener("show.bs.modal", function (event) {
+    // Tombol atau elemen yang memicu modal
+    var button = event.relatedTarget;
+
+    // Ambil ongkir-id dari atribut ongkir
+    var ongkirId = button.getAttribute("ongkir-id");
+    // var itemCatatan = button.getAttribute("data-catatan");
+
+    // Masukkan nilai itemId ke dalam input hidden
+    var hiddenInput = tglModal.querySelector('input[name="id_ongkir"]');
+    hiddenInput.value = ongkirId;
+  });
+
+  // Mendapatkan tanggal hari ini
+  // Mengatur tanggal minimum menjadi hari ini berdasarkan waktu lokal
+  const today = new Date();
+  const localDate =
+    today.getFullYear() +
+    "-" +
+    String(today.getMonth() + 1).padStart(2, "0") +
+    "-" +
+    String(today.getDate()).padStart(2, "0");
+
+  document.getElementById("tglPermintaan").setAttribute("min", localDate);
+  // Mencegah input melalui keyboard
+  const dateInput = document.getElementById("tglPermintaan");
+  dateInput.addEventListener("click", function () {
+    this.showPicker(); // Method khusus yang didukung browser modern
   });
 })(jQuery);

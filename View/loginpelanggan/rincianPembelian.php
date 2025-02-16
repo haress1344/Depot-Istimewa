@@ -134,7 +134,7 @@ $format = new transaksiController();
                                     </h4>
                                     <div class="row m-auto">
                                         <div class="col-5">
-                                            <p class="color-secondary"><?= $rowsData[0]["tgl_transaksi"] ?></p>
+                                            <p class="color-secondary"><?= $rowsData[0]["tgl_pemesanan"] ?></p>
                                         </div>
                                         <div class="col-7">
                                             <!-- <li class="pb-3 color-seventh">Sudah Diterima</li> -->
@@ -148,7 +148,7 @@ $format = new transaksiController();
                                             <p>Ongkos Kirim</p>
                                         </div>
                                         <div class="col-5">
-                                            <p>: <?= $rowsData[0]["id_pemesanan"] ?></p>
+                                            <p>: <?= $rowsData[0]["kode_transaksi"] ?></p>
                                             <p>: Rp <?= $format->formatHarga($rowsData[0]["harga_produk"]) ?></p>
                                             <p>: <?= $rowsData[0]["jumlah_barang"] ?> Item</p>
                                             <p>: Rp <?= (isset($rowsData[0]["biaya_ongkir"])) ? $format->formatHarga($rowsData[0]["biaya_ongkir"]) : "0" ?></p>
@@ -170,7 +170,7 @@ $format = new transaksiController();
                                     <a href="index.php?page=transaksi&aksi=view&p=<?= $kondisiHalaman ?>&keyword=<?= $keyword ?>" type="button" class="btn color-secondary-button fs-5 me-2 pt-0 pb-0 ps-4 pe-4">Kembali</a>
                                 <?php else: ?>
                                     <a href="index.php?page=transaksi&aksi=view&p=<?= $kondisiHalaman ?>&keyword=<?= $keyword ?>" type="button" class="btn color-secondary-button fs-5 me-2 pt-0 pb-0 ps-4 pe-4">Kembali</a>
-                                    <a href="index.php?page=ulasan&aksi=tambahUlasan&id=<?=$rowsData[0]["id_pemesanan"]?>&item=<?= $rowsData[0]["id_item"] ?>&pdk=<?= $rowsData[0]["id_produk"] ?>&tgl=<?= $rowsData[0]["tgl_transaksi"] ?>&p=<?= $kondisiHalaman ?>&keyword=<?= $keyword ?>" type="button" class="btn color-primary-button fs-5 ms-2 pt-0 pb-0 ps-4 pe-4">Beri Ulasan</a>
+                                    <a href="index.php?page=ulasan&aksi=tambahUlasan&id=<?=$rowsData[0]["kode_transaksi"]?>&item=<?= $rowsData[0]["id_item"] ?>&pdk=<?= $rowsData[0]["id_produk"] ?>&tgl=<?= $rowsData[0]["tgl_pemesanan"] ?>&p=<?= $kondisiHalaman ?>&keyword=<?= $keyword ?>" type="button" class="btn color-primary-button fs-5 ms-2 pt-0 pb-0 ps-4 pe-4">Beri Ulasan</a>
                                 <?php endif; ?>
                             <?php else : ?>
                                 <a href="index.php?page=transaksi&aksi=view&p=<?= $kondisiHalaman ?>&keyword=<?= $keyword ?>" type="button" class="btn color-secondary-button fs-5 me-2 pt-0 pb-0 ps-4 pe-4">Kembali</a>
@@ -181,7 +181,7 @@ $format = new transaksiController();
                                     <a href="index.php?page=transaksi&aksi=view&p=<?= $kondisiHalaman ?>" type="button" class="btn color-secondary-button fs-5 me-2 pt-0 pb-0 ps-4 pe-4">Kembali</a>
                                 <?php else: ?>
                                     <a href="index.php?page=transaksi&aksi=view&p=<?= $kondisiHalaman ?>" type="button" class="btn color-secondary-button fs-5 me-2 pt-0 pb-0 ps-4 pe-4">Kembali</a>
-                                    <a href="index.php?page=ulasan&aksi=tambahUlasan&id=<?=$rowsData[0]["id_pemesanan"]?>&item=<?= $rowsData[0]["id_item"] ?>&pdk=<?= $rowsData[0]["id_produk"] ?>&tgl=<?= $rowsData[0]["tgl_transaksi"] ?>&p=<?= $kondisiHalaman ?>" type="button" class="btn color-primary-button fs-5 ms-2 pt-0 pb-0 ps-4 pe-4">Beri Ulasan</a>
+                                    <a href="index.php?page=ulasan&aksi=tambahUlasan&id=<?=$rowsData[0]["kode_transaksi"]?>&item=<?= $rowsData[0]["id_item"] ?>&pdk=<?= $rowsData[0]["id_produk"] ?>&tgl=<?= $rowsData[0]["tgl_pemesanan"] ?>&p=<?= $kondisiHalaman ?>" type="button" class="btn color-primary-button fs-5 ms-2 pt-0 pb-0 ps-4 pe-4">Beri Ulasan</a>
                                 <?php endif; ?>
                             <?php else : ?>
                                 <a href="index.php?page=transaksi&aksi=view&p=<?= $kondisiHalaman ?>" type="button" class="btn color-secondary-button fs-5 me-2 pt-0 pb-0 ps-4 pe-4">Kembali</a>

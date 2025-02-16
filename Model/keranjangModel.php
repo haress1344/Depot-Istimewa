@@ -63,7 +63,7 @@ class keranjangModel
         $resultCekOngkir = mysqli_query($db, $queryCekOngkir);
 
         if (mysqli_num_rows($resultCekOngkir) > 0) {
-            $query = "SELECT keranjang.id_keranjang, user.nama_user, user.email, user.no_tlp, ongkir.alamat_tujuan, user.username, 
+            $query = "SELECT keranjang.id_keranjang, user.nama_user, user.email, user.no_tlp, ongkir.id_ongkir, ongkir.kota_tujuan, ongkir.alamat_tujuan, ongkir.tgl_permintaan, user.username, 
                         produk.id_produk ,produk.nama_produk, produk.gambar_produk, produk.jumlah_stok, produk.harga_produk, item_keranjang.id_item, 
                         item_keranjang.jumlah_barang, item_keranjang.catatan_item, (harga_produk * jumlah_barang) as total_harga, ongkir.biaya_ongkir FROM user 
                         JOIN keranjang ON keranjang.id_user = user.id_user
@@ -250,5 +250,12 @@ class keranjangModel
         $query = "DELETE FROM item_keranjang WHERE id_keranjang = $id_keranjang AND id_produk = $id_produk";
         mysqli_query($db, $query);
         return mysqli_affected_rows($db);
+    }
+
+    public function dateFormatting($data)
+    {
+        $tgl = new DateTime($data);
+        $tgl = $tgl->format('d M Y');
+        return $tgl;
     }
 }

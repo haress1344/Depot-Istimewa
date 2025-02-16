@@ -91,6 +91,12 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a class="sidebar-link" href="index.php?page=pengiriman&aksi=radiusPengiriman">
+                            <i class="color-third" data-feather="map-pin"></i>
+                            <strong>Radius Pengiriman</strong>
+                        </a>
+                    </li>
+                    <!-- <li class="sidebar-item">
                         <a class="sidebar-link" href="index.html">
                             <i class="icon-bantuan"></i>
                             <strong>Kelola Bantuan</strong>
@@ -101,7 +107,7 @@
                             <i class="icon-riwayat"></i>
                             <strong>Riwayat Pembaruan</strong>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </nav>
@@ -149,7 +155,7 @@
                                     </div>
                                     <div class="mb-3">
 
-                                        <label class="mb-2" >*Pilih Icon Kategori</label>
+                                        <label class="mb-2">*Pilih Icon Kategori</label>
 
                                         <?php foreach ($icon as $row) : ?>
                                             <div class="form-check pb-2">
@@ -162,7 +168,7 @@
                                         <?php endforeach; ?>
 
                                     </div>
-                                    
+
                                     <div class="mb-3">
                                         <label for="gambarkategori" class="form-label">*File Gambar Kategori (lebar 419px & tinggi
                                             258px) (ekstensi file .jpeg)</label>

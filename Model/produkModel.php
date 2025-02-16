@@ -176,7 +176,7 @@ class produkModel
     //method untuk memberikan format pada harga
     public function hargaProduk($hargaProduk)
     {
-        $formatHarga = number_format($hargaProduk, 2, ",", ".");
+        $formatHarga = number_format($hargaProduk, 0, ",", ".");
         return $formatHarga;
     }
     //method untuk menghitung data kategori pada database

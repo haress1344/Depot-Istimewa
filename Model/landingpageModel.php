@@ -87,7 +87,7 @@ class landingpageModel
     //method untuk memberikan format pada harga
     public function hargaProduk($hargaProduk)
     {
-        $formatHarga = number_format($hargaProduk, 2, ",", ".");
+        $formatHarga = number_format($hargaProduk, 0, ",", ".");
         return $formatHarga;
     }
 }

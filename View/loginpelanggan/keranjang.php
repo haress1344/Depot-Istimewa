@@ -1,5 +1,6 @@
 <?php
 $harga = new produkController();
+$date = new keranjangController();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -183,7 +184,7 @@ $harga = new produkController();
                                             <h6 class="text-center color-third mb-3">Rp <?= $harga->harga($krj["harga_produk"]) ?></h6>
                                             <div class="row justify-content-center mb-3">
                                                 <div class="col-sm-9 col-7 catatan-produk">
-                                                    <a data-bs-toggle="modal" data-bs-target="#reqModal" data-id="<?= $krj["id_produk"] ?>" data-catatan="<?= $krj["catatan_item"] ?>" href="#"><i class="<?= (empty($krj["catatan_item"])) ? "fa-solid fa-notes-medical me-2" : "fa-solid fa-pencil me-2" ?>"></i> <span style="color: #8f8d8d;"><?= empty($krj["catatan_item"]) ? "Tambahkan Catatan" : $krj["catatan_item"] ?></span></a>
+                                                <a style="color: #8f8d8d;" data-bs-toggle="modal" data-bs-target="#reqModal" data-id="<?= $krj["id_produk"] ?>" data-catatan="<?=$krj["catatan_item"]?>" href="#"><i class="<?= (empty($krj["catatan_item"])) ? "fa-solid fa-notes-medical me-2" : "fa-solid fa-pencil me-2" ?>"></i> <span style="color: #8f8d8d;"><?= empty($krj["catatan_item"]) ? "Tambahkan Catatan" : $krj["catatan_item"] ?></span></a>
                                                 </div>
                                             </div>
                                             <form action="index.php?page=keranjang&aksi=hapusItem" method="post">
@@ -238,7 +239,7 @@ $harga = new produkController();
                                     <hr class="mt-4 mb-4" />
                                     <h5 class="color-secondary mb-2">Lokasi Pengiriman</h5>
                                     <p class="color-secondary">
-                                        <?= (isset($keranjang[0]["alamat_tujuan"])) ? $keranjang[0]["alamat_tujuan"] : "(alamat belum ditentukan)" ?>
+                                        <?= (isset($keranjang[0]["alamat_tujuan"])) ? $keranjang[0]["alamat_tujuan"] . ", " . $keranjang[0]["kota_tujuan"] : "(alamat belum ditentukan)" ?>
                                     </p>
                                     <p class="color-seventh">
                                         Rp <?= (isset($keranjang[0]["biaya_ongkir"])) ? $harga->harga($keranjang[0]["biaya_ongkir"]) : 0 ?> +
@@ -248,6 +249,15 @@ $harga = new produkController();
                                     <?php else: ?>
                                     <?php endif; ?>
                                     <br />
+                                    <?php if (isset($keranjang[0]["alamat_tujuan"])): ?>
+                                        <div class="mb-4"></div>
+                                        <h5 class="color-secondary mb-2">Tanggal Pengiriman</h5>
+                                        <p class="color-secondary">
+                                            <?= $date->formatTgl($keranjang[0]["tgl_permintaan"])  ?>
+                                        </p>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#tglModal" ongkir-id="<?= $keranjang[0]["id_ongkir"] ?>" type="button" class="btn color-secondary-button pt-0 pb-0 ps-3 pe-3 float-end">Atur</a>
+                                        <br />
+                                    <?php endif; ?>
                                 </div>
                                 <hr class="mt-4 mb-4" />
                                 <div class="row justify-content-between mb-4">
@@ -259,7 +269,7 @@ $harga = new produkController();
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2">
-                                    <button id="pay-button" href="" type="button" class="btn color-primary-button ps-4 pe-4 mb-3" <?= (empty($keranjang)) ? 'disabled' : ' ' ?> data-alamat="<?= isset($keranjang[0]["alamat_tujuan"]) ? $keranjang[0]["alamat_tujuan"] : '' ?>">
+                                    <button id="pay-button" href="" type="button" class="btn color-primary-button ps-4 pe-4 mb-3" <?= (empty($keranjang)) ? 'disabled' : ' ' ?> data-alamat="<?= isset($keranjang[0]["alamat_tujuan"]) ? $keranjang[0]["alamat_tujuan"] . ', ' . $keranjang[0]["kota_tujuan"] : '' ?>">
                                         CHECKOUT
                                     </button>
                                 </div>
@@ -355,6 +365,45 @@ $harga = new produkController();
     </div>
     <!-- akhir modal request -->
 
+    <!-- modal tgl pengiriman -->
+    <div class="modal fade" id="tglModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content card-secondary">
+                <div class="modal-header">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-7 text-center color-secondary">
+                                <h4 class="modal-title" id="exampleModalLabel">Tanggal Pengiriman</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <h5 class="text-center">Tentukan tanggal pengiriman pesananmu</h5>
+                        <div class="row justify-content-center mt-4">
+                            <div class="col-md-11">
+                                <form action="index.php?page=pengiriman&aksi=storeTglPermintaan" method="post">
+                                    <!-- <input type="hidden" name="id_ongkir"> -->
+                                    <div class="mb-4">
+                                        <input name="tglPermintaan" type="date" class="form-control" id="tglPermintaan" min="" value="<?= $keranjang[0]["tgl_permintaan"] ?>" />
+                                    </div>
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn color-primary-button">
+                                            <h6>SELESAI</h6>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- akhir modal tgl pengiriman -->
+
     <!-- modal peringatan -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -364,11 +413,6 @@ $harga = new produkController();
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <?php if (isset($_SESSION["success_alert"])) : ?>
-                        <?php $showModal = TRUE;
-                            unset($_SESSION["success_alert"]);
-                        endif;
-                        ?>
                         <span id="showModal" style="display: none;"><?= json_encode($showModal) ?></span>
                         <h5 class="text-center mb-4">Oops, jangan lupa mengatur lokasi alamatmu</h5>
                         <div class="row justify-content-center" style="height: 100px; margin: 40px">
@@ -388,7 +432,7 @@ $harga = new produkController();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="assets/js/jsMenuKategori.js?v=2"></script>
-    <script src="assets/js/jsKeranjang.js?v=8"></script>
+    <script src="assets/js/jsKeranjang.js?v=15"></script>
 </body>
 
 </html>

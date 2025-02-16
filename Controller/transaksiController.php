@@ -3,13 +3,14 @@
 
 class transaksiController
 {
-    private $transaksi, $kategori, $keranjang, $ulasan;
+    private $transaksi, $kategori, $keranjang, $ulasan, $pengiriman;
     public function __construct()
     {
         $this->transaksi = new transaksiModel();
         $this->keranjang = new keranjangModel();
         $this->kategori = new kategoriModel();
         $this->ulasan = new ulasanModel();
+        $this->pengiriman = new pengirimanModel();
     }
 
 
@@ -55,23 +56,37 @@ class transaksiController
         require_once("View/admin/pendapatan.php");
     }
 
+    // public function viewRiwayatPembelian()
+    // {
+    //     $idPelanggan = $_SESSION["pelanggan"]["id_user"];
+    //     $kategori = $this->kategori->viewAllKategori();
+    //     $riwayatPembelian = $this->transaksi->getDataRiwayatPembelian($idPelanggan);
+    //     if (isset($riwayatPembelian["keyword"])) {
+    //         $keyword = $riwayatPembelian["keyword"];
+    //     }
+    //     if (isset($_GET["order_id"]) || isset($_GET["status_code"]) || isset($_GET["transaction_status"])) {
+    //         $status_code = $_GET["status_code"];
+    //         $order_id = $_GET["order_id"];
+    //         $status_transaksi = $_GET["transaction_status"];
+    //     }
+    //     $rows = $riwayatPembelian["rows"];
+    //     $jumHalaman = $riwayatPembelian["jumHalaman"];
+    //     $kondisiHalaman = $riwayatPembelian["kondisiHalaman"];
+    //     require_once("View/loginpelanggan/riwayatPembelian.php");
+    // }
+
     public function viewRiwayatPembelian()
     {
         $idPelanggan = $_SESSION["pelanggan"]["id_user"];
         $kategori = $this->kategori->viewAllKategori();
         $riwayatPembelian = $this->transaksi->getDataRiwayatPembelian($idPelanggan);
-        if (isset($riwayatPembelian["keyword"])) {
-            $keyword = $riwayatPembelian["keyword"];
-        }
-        if (isset($_GET["order_id"]) || isset($_GET["status_code"]) || isset($_GET["transaction_status"])) {
-            $status_code = $_GET["status_code"];
-            $order_id = $_GET["order_id"];
-            $status_transaksi = $_GET["transaction_status"];
-        }
-        $rows = $riwayatPembelian["rows"];
-        $jumHalaman = $riwayatPembelian["jumHalaman"];
-        $kondisiHalaman = $riwayatPembelian["kondisiHalaman"];
-        require_once("View/loginpelanggan/riwayatPembelian.php");
+        require_once("View/loginpelanggan/riwayatPembelian2.php");
+    }
+
+    public function cariRiwayatPembelian()
+    {
+        $keyword = $_POST["keyword"];
+        header("location: index.php?page=transaksi&aksi=view&keyword=$keyword");
     }
 
     public function viewRincianPembelian()
@@ -80,17 +95,21 @@ class transaksiController
             $keyword = $_GET["keyword"];
         }
         $idPelanggan = $_SESSION["pelanggan"]["id_user"];
+        $id_pemesanan = $_GET["id"];
         $kategori = $this->kategori->viewAllKategori();
-        $rincianPembelian = $this->transaksi->getDataRincianPembelianProduk($idPelanggan);
-        $rowsData = $rincianPembelian["rowsDataPembelian"];
-        $resultUlasan = $rincianPembelian["resultCekUlasan"];
-        $resultTransaksi = $rincianPembelian["resultCekTransaksi"];
-        // $cekUlasan = $this->ulasan->checkUlasan($_GET);
+
+        $rincianPembelian = $this->transaksi->getDataRincianPembelianProduk($idPelanggan, $id_pemesanan);
+        // $resultUlasan = $this->ulasan->cekUlasanItem($rincianPembelian);
+
+        // $rowsData = $rincianPembelian["rowsDataPembelian"];
+        // $resultUlasan = $rincianPembelian["resultCekUlasan"];
+        // $resultTransaksi = $rincianPembelian["resultCekTransaksi"];
+
         // var_dump($cekUlasan);
         // die;
-        $kondisiHalaman = $_GET["p"];
+        // $kondisiHalaman = $_GET["p"];
         // die;
-        require_once("View/loginpelanggan/rincianPembelian.php");
+        require_once("View/loginpelanggan/rincianPembelian2.php");
     }
 
 
@@ -123,11 +142,27 @@ class transaksiController
         }
     }
 
-
-
     public function formatHarga($totalPembayaran)
     {
         $format = $this->transaksi->formatting($totalPembayaran);
+        return $format;
+    }
+
+    public function formatTgl($tgl_pemesanan)
+    {
+        $format = $this->ulasan->dateFormatting($tgl_pemesanan);
+        return $format;
+    }
+
+    public function formatTglWaktu($tglWaktu)
+    {
+        $format = $this->transaksi->dateFormatting($tglWaktu);
+        return $format;
+    }
+
+    public function formatTime($waktu)
+    {
+        $format = $this->pengiriman->timeFormatting($waktu);
         return $format;
     }
 }

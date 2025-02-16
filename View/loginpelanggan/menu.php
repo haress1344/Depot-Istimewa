@@ -72,7 +72,7 @@ $ulasan = new ulasanController();
                             <li>
                                 <a class="dropdown-item1" href="index.php?page=pelanggan&aksi=password">Ubah Password</a>
                             </li>
-                           
+
                             <li>
                                 <a class="dropdown-item1 text-danger" href="index.php?page=pelanggan&aksi=logout">Keluar</a>
                             </li>

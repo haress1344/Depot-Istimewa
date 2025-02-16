@@ -38,7 +38,7 @@ class adminModel
     {
         $db = $this->koneksi->konek();
         $recentDate = date('Y-m-d');
-        $query = "SELECT SUM(total_pembayaran) as pendapatan FROM transaksi WHERE tgl_transaksi = '$recentDate' AND status_transaksi = 1 GROUP BY tgl_transaksi";
+        $query = "SELECT SUM(total_pembayaran) as pendapatan FROM transaksi WHERE tgl_pemesanan = '$recentDate' AND status_transaksi = 1 GROUP BY tgl_pemesanan";
         $result = mysqli_query($db, $query);
         $rows = [];
         while ($row = mysqli_fetch_array($result)) {
@@ -49,7 +49,7 @@ class adminModel
 
     public function formatting($totalPembayaran)
     {
-        $formatHarga = number_format($totalPembayaran, 2, ",", ".");
+        $formatHarga = number_format($totalPembayaran, 0, ",", ".");
         return $formatHarga;
     }
 }

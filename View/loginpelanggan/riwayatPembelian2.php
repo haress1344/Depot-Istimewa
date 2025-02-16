@@ -25,10 +25,10 @@ $format = new transaksiController();
     <!-- css bootstrap custom -->
     <link href="assets/css/bootstrap.min.css?v=2" rel="stylesheet">
     <!-- CSS Custom -->
-    <link rel="stylesheet" href="assets/css/styleku.css?v=10" />
+    <link rel="stylesheet" href="assets/css/styleku.css?v=2" />
     <!-- <link rel="stylesheet" href="assets/css/style.css?" /> -->
 
-    <title><?= $_SESSION["pelanggan"]["nama_user"] ?> || Tambah Ulasan Depot Istimewa Lawang</title>
+    <title><?= $_SESSION["pelanggan"]["nama_user"] ?> || Riwayat Pembelian Depot Istimewa Lawang</title>
 </head>
 
 <body>
@@ -121,122 +121,79 @@ $format = new transaksiController();
                     </div>
                 </div>
                 <!-- akhir menu akun -->
-                <!-- tambah ulasan -->
+                <!-- riwayat pembelian -->
                 <div class="col-lg-7">
-                    <h3 class="color-secondary mb-4">TAMBAH ULASAN</h3>
-                    <?php if (isset($_SESSION["error_file"])): ?>
-                        <?php if ($_SESSION["error_file"] === TRUE) : ?>
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>Oops, foto terlalu besar atau tidak sesuai</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php unset($_SESSION["error_file"]);
-                        endif; ?>
-                    <?php endif; ?>
-                    <form id="formRating" action="index.php?page=ulasan&aksi=storeUlasan&id=<?= $_GET["id"] ?>&item=<?= $_GET["item"] ?>&pdk=<?= $_GET["pdk"] ?>&tgl=<?= $_GET["tgl"] ?>?>" method="post" enctype="multipart/form-data">
-                        <div class="card mb-3 card-secondary">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-5 col-sm-5 text-center">
-                                    <img src="assets/img/<?= $row[0]["gambar_produk"] ?>" class="img-fluid rounded-start mt-4 gambar-produk"
-                                        alt="..." />
+                    <div class="row justify-content-between">
+                        <div class="col-6">
+                            <h3 class="color-secondary mb-4">RIWAYAT PEMBELIAN</h3>
+                        </div>
+                        <div class="col-4">
+                            <form action="index.php?page=transaksi&aksi=cariRiwayat" method="POST">
+                                <div class="input-group mb-3">
+                                    <input name="keyword" type="text" class="form-control" placeholder="Nama produk / id transaksi" aria-describedby="button-addon2">
+                                    <!-- <span> -->
+                                    <button type="submit" class="btn color-secondary-button border" id="button-addon2">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                    <!-- </span> -->
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 align-self-center">
-                                    <div class="card-body p-4 rincian-riwayat">
-                                        <h4 class="card-title color-secondary mb-3 text-center">
-                                            <?= $row[0]["nama_produk"] ?>
-                                        </h4>
-                                        <h6>Kualitas Produk</h6>
-                                        <fieldset class="rating">
+                            </form>
+                        </div>
+                    </div>
 
-                                            <input name="rating" id="star5" class="form-check-input" type="radio"
-                                                value="5">
-                                            <label class="form-check-label full" for="star5" title="5 Stars"></label>
-
-                                            <input name="rating" id="star4half" class="form-check-input" type="radio"
-                                                value="4.5">
-                                            <label class="form-check-label half" for="star4half"
-                                                title="4.5 Stars"></label>
-
-                                            <input name="rating" id="star4" class="form-check-input" type="radio"
-                                                value="4">
-                                            <label class="form-check-label full" for="star4" title="4 Stars"></label>
-
-                                            <input name="rating" id="star3half" class="form-check-input" type="radio"
-                                                value="3.5">
-                                            <label class="form-check-label half" for="star3half"
-                                                title="3.5 Stars"></label>
-
-                                            <input name="rating" id="star3" class="form-check-input" type="radio"
-                                                value="3">
-                                            <label class="form-check-label full" for="star3" title="3 Stars"></label>
-
-                                            <input name="rating" id="star2half" class="form-check-input" type="radio"
-                                                value="2.5">
-                                            <label class="form-check-label half" for="star2half"
-                                                title="2.5 Stars"></label>
-
-                                            <input name="rating" id="star2" class="form-check-input" type="radio"
-                                                value="2">
-                                            <label class="form-check-label full" for="star2" title="2 Stars"></label>
-
-                                            <input name="rating" id="star1half" class="form-check-input" type="radio"
-                                                value="1.5">
-                                            <label class="form-check-label half" for="star1half"
-                                                title="1.5 Stars"></label>
-
-                                            <input name="rating" id="star1" class="form-check-input" type="radio"
-                                                value="1">
-                                            <label class="form-check-label full" for="star1" title="1 Stars"></label>
-
-                                            <input name="rating" id="starhalf" class="form-check-input" type="radio"
-                                                value="0.5">
-                                            <label class="form-check-label half" for="starhalf"
-                                                title="0.5 Stars"></label>
-                                        </fieldset>
-                                        <input name="id_transaksi" type="hidden" value="<?= $row[0]["id_transaksi"] ?>">
-                                        <input name="id_item" type="hidden" value="<?= $_GET["item"] ?>">
-                                        <div class="mb-3">
-                                            <h6>Gambar Produk</h6>
-                                            <div class="row">
-                                                <div class="col-6 col-sm-6 ">
-                                                    <label for="gambarproduk" class="tambah-gambar-ulasan">
-                                                        <div class="px-5 pt-3 text-center secondary-border" id="image-container">
-                                                            <i class="fa-regular fa-image icon-tambah-gambar"></i>
-                                                            <p class="px-4">tambahkan gambar</p>
-                                                            <!-- <label for="gambarproduk" class="form-label">Tambahkan Foto (jika ada)</label> -->
-                                                        </div>
-                                                    </label>
-                                                    <input name="gambarproduk" class="form-control" type="file" id="gambarproduk" style="display: none;" accept="image/*" />
-                                                </div>
-                                            </div>
+                    <?php foreach ($riwayatPembelian as $id) : ?>
+                        <a href="index.php?page=transaksi&aksi=rincianPembelian&id=<?= $id["kode_transaksi"] ?>">
+                            <div class="card mb-3 card-secondary p-3 card-riwayat">
+                                <div class="row justify-content-between">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                        <h5 class="color-secondary"><?= $id["kode_transaksi"] ?></h5>
+                                        <p class="color-ninth"><?= $format->formatTgl($id["tgl_pemesanan"]) ?></p>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-center">
+                                        <p class="pb-3 <?= ($id["status_transaksi"] == "0") ? "color-eight" : "color-seventh" ?>"><?= ($id["status_transaksi"] == "0") ? "Belum Dibayar" : "Sudah Dibayar" ?></p>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-end">
+                                        <?php if ($id["status_kirim"] == 0): ?>
+                                            <p class="color-third">Belum Dikirim</p>
+                                        <?php elseif ($id["status_kirim"] == 1): ?>
+                                            <p class="color-third">Sedang Disiapkan</p>
+                                        <?php elseif ($id["status_kirim"] == 2): ?>
+                                            <p class="color-third">Sedang Dikirim</p>
+                                        <?php elseif ($id["status_kirim"] == 3): ?>
+                                            <p class="color-third">Sudah Diterima</p>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                <?php foreach ($id["items"] as $produk): ?>
+                                    <div class="row riwayat-pemb">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-center">
+                                            <img src="assets/img/<?= $produk["gambar_produk"] ?>" class="img-fluid rounded-start mt-4 gambar-produk" alt="..." />
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="ketproduk" class="form-label">
-                                                <h6>Keterangan</h6>
-                                            </label>
-                                            <textarea disabled="disabled" name="ketproduk" class="form-control" type="text"
-                                                id="ketproduk" placeholder="ulasan anda" required></textarea>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 align-self-center">
+                                            <h4 class="card-title color-secondary mt-3">
+                                                <?= $produk["nama_produk"] ?>
+                                            </h4>
+                                            <p class="color-ninth"><?= $produk["catatan_item"] ?></p>
+
                                         </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-3 align-self-center">
+                                            <p class="color-third harga">Rp <?= $format->formatHarga($produk["harga_total_produk"]) ?></p>
+                                        </div>
+
+                                    </div>
+                                <?php endforeach; ?>
+                                <div class="row justify-content-end">
+                                    <div class="col-lg-5 col-md-3 col-sm-5 col-5 text-end color-ninth">
+                                        Total : <span class="fw-bold">Rp <?= $format->formatHarga($id["total_pembayaran"]) ?></span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="text-center pt-3">
-                            <!-- <?php if (isset($keyword)) : ?>
-                                <a href="index.php?page=transaksi&aksi=rincianPembelian&id=<?= $_GET["id"] ?>&item=<?= $row[0]["id_item"] ?>&pdk=<?= $row[0]["id_produk"] ?>&tgl=<?= $row[0]["tgl_transaksi"] ?>&p=<?= $kondisiHalaman ?>&keyword=<?= $keyword ?>" type="button"
-                                    class="btn color-secondary-button fs-5 me-2 pt-1 pb-1 ps-5 pe-5">Kembali</a>
-                            <?php else: ?>
-                                <a href="index.php?page=transaksi&aksi=rincianPembelian&id=<?= $_GET["id"] ?>&item=<?= $row[0]["id_item"] ?>&pdk=<?= $row[0]["id_produk"] ?>&tgl=<?= $row[0]["tgl_transaksi"] ?>&p=<?= $kondisiHalaman ?>" type="button"
-                                    class="btn color-secondary-button fs-5 me-2 pt-1 pb-1 ps-5 pe-5">Kembali</a>
-                            <?php endif; ?> -->
-                            <a href="index.php?page=transaksi&aksi=rincianPembelian&id=<?= $_GET["id"] ?>&item=<?= $row[0]["id_item"] ?>&pdk=<?= $row[0]["id_produk"] ?>&tgl=<?= $_GET["tgl"] ?>" type="button"
-                                class="btn color-secondary-button fs-5 me-2 pt-1 pb-1 ps-5 pe-5">Kembali</a>
-                            <button disabled="disabled" id="simpanUlasan" type="submit"
-                                class="btn color-primary-button fs-5 ms-2 pt-1 pb-1 ps-4 pe-4">Simpan Ulasan</button>
-                        </div>
-                    </form>
+                        </a>
+                    <?php endforeach; ?>
                 </div>
-                <!-- akhir tambah ulasan -->
+                <!-- akhir riwayat pembelian -->
+
             </div>
         </div>
     </div>
@@ -283,17 +240,8 @@ $format = new transaksiController();
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="assets/js/jsRating.js?v=8"></script>
-    <script>
-        $(document).ready(function() {
-            $('input[name="rating"]').change(function() {
-                if ($(this).is(':checked')) {
-                    $('#ketproduk').prop('disabled', false);
-                }
-            });
-        });
-    </script>
+    <!-- <script src="lib/owlcarousel/owl.carousel.min.js"></script> -->
+    <script src="assets/js/jsConfProfile.js?v=2"></script>
 </body>
 
 </html>

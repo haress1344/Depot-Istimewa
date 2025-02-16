@@ -20,7 +20,7 @@ $format = new transaksiController();
 
 
     <link href="assets/css/app.css" rel="stylesheet" />
-    <link href="assets/css/styleku.css?" rel="stylesheet" />
+    <link href="assets/css/styleku.css?v=4" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
     <title>Admin | Depot Istimewa</title>
 </head>
@@ -94,6 +94,12 @@ $format = new transaksiController();
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a class="sidebar-link" href="index.php?page=pengiriman&aksi=radiusPengiriman">
+                            <i class="color-third" data-feather="map-pin"></i>
+                            <strong>Radius Pengiriman</strong>
+                        </a>
+                    </li>
+                    <!-- <li class="sidebar-item">
                         <a class="sidebar-link" href="index.html">
                             <i class="icon-bantuan"></i>
                             <strong>Kelola Bantuan</strong>
@@ -104,7 +110,7 @@ $format = new transaksiController();
                             <i class="icon-riwayat"></i>
                             <strong>Riwayat Pembaruan</strong>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </nav>
@@ -168,10 +174,11 @@ $format = new transaksiController();
                                     <thead>
                                         <tr>
                                             <th class="d-none d-xl-table-cell">Username</th>
-                                            <th class=>Id Transaksi</th>
-                                            <th class="d-none d-xl-table-cell">Tgl Transaksi</th>
+                                            <th class=>Kode Transaksi</th>
+                                            <th class="d-none d-xl-table-cell">Tgl Pemesanan</th>
                                             <th class="d-none d-xl-table-cell">Total Biaya</th>
-                                            <th class="d-none d-xl-table-cell">Status Transaksi</th>
+                                            <th class="d-none d-xl-table-cell">Status transaksi</th>
+                                            <th class="d-none d-xl-table-cell">Status Pengiriman</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -179,10 +186,19 @@ $format = new transaksiController();
                                         <?php foreach ($rows as $row) : ?>
                                             <tr>
                                                 <td class="d-none d-xl-table-cell"><?= $row["username"] ?></td>
-                                                <td class=""><?= $row["id_pemesanan"] ?></td>
-                                                <td class="d-none d-xl-table-cell"><?= $row["tgl_transaksi"] ?></td>
+                                                <td class=""><?= $row["kode_transaksi"] ?></td>
+                                                <td class="d-none d-xl-table-cell"><?= $format->formatTgl($row["tgl_pemesanan"]) ?></td>
                                                 <td class="d-none d-xl-table-cell">Rp <?= $format->formatHarga($row["total_pembayaran"]) ?></td>
-                                                <td class="d-none d-xl-table-cell <?=($row["status_transaksi"] == "0") ? "text-danger" : "text-success"?>"><?= ($row["status_transaksi"] == 0) ? "Belum Dibayar" : "Sudah Dibayar"?></td>
+                                                <td class="d-none d-xl-table-cell <?= ($row["status_transaksi"] == "0") ? "text-danger" : "text-success" ?>"><?= ($row["status_transaksi"] == 0) ? "Belum Dibayar" : "Sudah Dibayar" ?></td>
+                                                
+                                                    <?php if ($row["status_kirim"] == 0 || $row["status_kirim"] == 1): ?>
+                                                        <td class="d-none d-xl-table-cell text-danger"> Belum Dikirim</td>
+                                                    <?php elseif ($row["status_kirim"] == 2): ?>
+                                                        <td class="d-none d-xl-table-cell"> Sedang Dikirim </td>
+                                                    <?php elseif ($row["status_kirim"] == 3): ?>
+                                                        <td class="d-none d-xl-table-cell text-success"> Diterima </td>
+                                                    <?php endif; ?>
+                                                
                                                 <td>
                                                     <?php if (isset($keyword)) : ?>
                                                         <div class="text-center">

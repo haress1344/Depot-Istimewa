@@ -86,14 +86,17 @@ class ulasanController
 
     public function tambahUlasan()
     {
-        if (isset($_GET["keyword"])) {
-            $keyword = $_GET["keyword"];
-        }
+        $keyword = (isset($_GET["keyword"]) ? $_GET["keyword"] : NULL);
         $idPelanggan = $_SESSION["pelanggan"]["id_user"];
-        $kondisiHalaman = $_GET["p"];
+        $kondisiHalaman = (isset($_GET["p"]) ? $_GET["p"] : NULL);
         $kategori = $this->kategori->viewAllKategori();
-        $row = $this->ulasan->getItemUlasan($idPelanggan);
-        require_once("View/loginpelanggan/tambahUlasan.php");
+        $kodeTransaksi = $_GET["id"];
+        if ($this->ulasan->getItemUlasan($idPelanggan)) {
+            $row = $this->ulasan->getItemUlasan($idPelanggan);
+            require_once("View/loginpelanggan/tambahUlasan.php");
+        } else {
+            header("location: index.php?page=transaksi&aksi=rincianPembelian&id=$kodeTransaksi");
+        }
     }
 
     public function viewRate($data)
@@ -108,10 +111,6 @@ class ulasanController
 
     public function storeUlasan()
     {
-        // var_dump($_POST);
-        // echo "<br>";
-        // var_dump($_FILES);
-        // die;
         $kondisiHalaman = (isset($_GET["p"]) ? $_GET["p"] : NULL);
         $idPemesanan = $_GET["id"];
         $item = $_GET["item"];
@@ -119,14 +118,20 @@ class ulasanController
         $tanggal = $_GET["tgl"];
         if ($this->ulasan->prosesStoreUlasan($_POST) > 0) {
             $_SESSION["ulasan_alert"] = TRUE;
-            header("location: index.php?page=transaksi&aksi=view");
+            header("location: index.php?page=transaksi&aksi=rincianPembelian&id=$idPemesanan");
         } else if ($this->ulasan->prosesStoreUlasan($_POST) === "File Error") {
             $_SESSION["error_file"] = TRUE;
             header("location: index.php?page=ulasan&aksi=tambahUlasan&id=$idPemesanan&item=$item&pdk=$produk&tgl=$tanggal&p=$kondisiHalaman");
         } else {
             $_SESSION["ulasan_alert"] = FALSE;
-            header("location: index.php?page=transaksi&aksi=view");
+            header("location: index.php?page=transaksi&aksi=rincianPembelian&id=$idPemesanan");
         }
+    }
+
+    public function cekStatusUlasan($id_item)
+    {
+        $status = $this->ulasan->cekUlasanItem($id_item);
+        return $status;
     }
 
     public function formatTgl($tgl_ulasan)

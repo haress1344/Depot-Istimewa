@@ -76,7 +76,7 @@ $formatHarga = new pengirimanController();
                             <li>
                                 <a class="dropdown-item1" href="index.php?page=pelanggan&aksi=password">Ubah Password</a>
                             </li>
-                            
+
                             <li>
                                 <a class="dropdown-item1 text-danger" href="index.php?page=pelanggan&aksi=logout">Keluar</a>
                             </li>
@@ -158,9 +158,12 @@ $formatHarga = new pengirimanController();
                             <div class="form-group">
                                 <label for="kotaTujuan">Kota Tujuan</label>
                                 <select name="kotaTujuan" id="kotaTujuan" class="form-control js-example-basic-single">
-                                    <?php foreach ($kota_array["rajaongkir"]["results"] as $kota) : ?>
-                                        <option value="<?= $kota["city_id"] ?>"><?= $kota["type"] ?> <?= $kota["city_name"] ?></option>
-                                    <?php endforeach; ?>
+                                    <?php foreach ($kota_array["rajaongkir"]["results"] as $index => $kota) : ?>
+                                        <?php if ($radius[$index]["nama_kota"] == $kota["type"] . " " . $kota["city_name"] && $radius[$index]["jarak"] <= $ketentuanRadius["radius_km"]): ?>
+                                            <option value="<?= $kota["city_id"] ?>"><?= $kota["type"] ?> <?= $kota["city_name"] ?></option>
+                                        <?php endif; ?>
+                                    <?php endforeach;
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -185,8 +188,6 @@ $formatHarga = new pengirimanController();
                             </div>
                         </div>
                     </form>
-
-
                 </div>
                 <!-- Akhir Form Pengiriman -->
 
@@ -202,7 +203,7 @@ $formatHarga = new pengirimanController();
                                     <div class="mb-3">
                                         <h5 class="color-secondary mb-2">Lokasi Depot</h5>
                                         <p class="color-secondary">
-                                            Kecamatan Lawang, Kabupaten Lawang
+                                            Kecamatan Lawang, Kabupaten Malang
                                         </p>
 
                                     </div>
@@ -224,7 +225,9 @@ $formatHarga = new pengirimanController();
                                                 <h5 class="color-third">Rp <?= $formatHarga->formatHarga($biayaOngkir) ?> </h5>
                                                 <input name="idKeranjang" type="hidden" value="<?= $idKeranjang ?>">
                                                 <input name="biayaOngkir" type="hidden" value="<?= $biayaOngkir ?>">
-                                                <input name="tujuanPengiriman" type="hidden" value="<?= $alamat ?>, <?= $tipe_kota ?> <?= $nama_kota ?>">
+                                                <input name="kotaTujuan" type="hidden" value="<?= $tipe_kota ?> <?= $nama_kota ?>">
+                                                <input name="alamatTujuan" type="hidden" value="<?= $alamat ?>">
+
                                             </div>
                                         <?php else: ?>
                                             <div class="col-lg-5">

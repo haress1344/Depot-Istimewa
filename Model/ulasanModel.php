@@ -12,18 +12,36 @@ class ulasanModel
         $db = $this->koneksi->konek();
         $item_keranjang = $_GET["item"];
         $id_produk = $_GET["pdk"];
-        $tgl_transaksi = $_GET["tgl"];
-        $query = "SELECT item_keranjang.id_item, transaksi.id_transaksi, transaksi.tgl_transaksi, transaksi.id_pemesanan, item_keranjang.jumlah_barang, produk.id_produk, produk.nama_produk, produk.gambar_produk, produk.harga_produk,(harga_produk * jumlah_barang) as harga_total_produk FROM transaksi
-                JOIN keranjang ON transaksi.id_keranjang = keranjang.id_keranjang
-                JOIN item_keranjang ON keranjang.id_keranjang = item_keranjang.id_keranjang
-                JOIN produk ON item_keranjang.id_produk = produk.id_produk 
-                WHERE keranjang.id_user = $data AND item_keranjang.id_item = $item_keranjang AND produk.id_produk = $id_produk AND transaksi.tgl_transaksi = '$tgl_transaksi'";
-        $result = mysqli_query($db, $query);
-        $rows = [];
-        while ($row = mysqli_fetch_assoc($result)) {
-            $rows[] = $row;
+        $tgl_pemesanan = $_GET["tgl"];
+        $queryCekUlasan = "SELECT id_ulasan FROM ulasan WHERE id_item = $item_keranjang";
+        $resultCek = mysqli_query($db, $queryCekUlasan);
+        if (mysqli_num_rows($resultCek) > 0) {
+            return FALSE;
+        } else {
+            $queryData = "SELECT item_keranjang.id_item, transaksi.id_transaksi, transaksi.tgl_pemesanan, transaksi.kode_transaksi, item_keranjang.jumlah_barang, produk.id_produk, produk.nama_produk, produk.gambar_produk, produk.harga_produk,(harga_produk * jumlah_barang) as harga_total_produk FROM transaksi
+                    JOIN keranjang ON transaksi.id_keranjang = keranjang.id_keranjang
+                    JOIN item_keranjang ON keranjang.id_keranjang = item_keranjang.id_keranjang
+                    JOIN produk ON item_keranjang.id_produk = produk.id_produk 
+                    WHERE keranjang.id_user = $data AND item_keranjang.id_item = $item_keranjang AND produk.id_produk = $id_produk AND transaksi.tgl_pemesanan = '$tgl_pemesanan'";
+            $resultData = mysqli_query($db, $queryData);
+            $rows = [];
+            while ($row = mysqli_fetch_assoc($resultData)) {
+                $rows[] = $row;
+            }
+            return $rows;
         }
-        return $rows;
+    }
+
+    public function cekUlasanItem($data)
+    {
+        $db = $this->koneksi->konek();
+        $query = "SELECT id_ulasan FROM ulasan WHERE id_item = $data";
+        $result = mysqli_query($db, $query);
+        if (mysqli_num_rows($result) > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function getItemRate($data)
@@ -153,6 +171,9 @@ class ulasanModel
         $ket_ulasan = $data["ketproduk"];
         $tgl_ulasan = date("Y-m-d");
 
+        // var_dump($_FILES);
+        // die;
+
         // $query = "INSERT INTO ulasan(id_produk, rating, ket_ulasan) VALUES ($id_produk, $rating, '$ket_ulasan')";
 
         if ($_FILES["gambarproduk"]["error"] === 4) {
@@ -224,14 +245,94 @@ class ulasanModel
         }
         //cek apakah file yang dipload terlalu besar atau tidak (satuan byte)
         if ($sizeFile > 2000000) {
-            return "error";
+            $tmpFile = $this->compressImage($tmpFile, $ekstensiFile);
+
+            // Debugging untuk memastikan file terkompresi ada
+            // if (!file_exists($tmpFile)) {
+            //     echo "file gagal dikompresi";
+            //     die;
+            // echo "<script>alert('Gagal mengompresi gambar.');</script>";
+            // return false;
+            // }
+            // return "error";
+
+            //membuat string acak
+            $namaFileBaru = uniqid() . "." . $ekstensiFile;
+
+            //memindahkan file yang diupload ke dalam folder yang ditentukan
+            $destination = "assets/img/" . $namaFileBaru;
+            //function rename() digunakan untuk memindahkan sekaligus mengganti nama file $tmpFile menuju folder tujuan $destination
+            if (!rename($tmpFile, $destination)) {
+
+                //debugging jika gambar gagal dipindahkan
+                // echo "gagal pindah gambar";
+                // die;
+                // echo "<script>alert('Gagal memindahkan gambar.');</script>";
+                // return false;
+            }
+            return $namaFileBaru;
+        } else {
+            //membuat string acak
+            $namaFileBaru = uniqid() . "." . $ekstensiFile;
+            move_uploaded_file($tmpFile, "assets/img/" . $namaFileBaru);
+            return $namaFileBaru;
         }
+
         //membuat string acak
-        $namaFileBaru = uniqid();
-        $namaFileBaru .= "." . $ekstensiFile;
+        // $namaFileBaru = uniqid() . "." . $ekstensiFile;
         //memindahkan file yang diupload ke dalam folder yang ditentukan
-        move_uploaded_file($tmpFile, "assets/img/" . $namaFileBaru);
-        return $namaFileBaru;
+        // $destination = "assets/img/" . $namaFileBaru;
+        //function rename() digunakan untuk memindahkan sekaligus mengganti nama file $tmpFile menuju folder tujuan $destination
+        // if (!rename($tmpFile, $destination)) {
+
+        //debugging jika gambar gagal dipindahkan
+        // echo "gagal pindah gambar";
+        // die;
+        // echo "<script>alert('Gagal memindahkan gambar.');</script>";
+        // return false;
+        // }
+
+        // move_uploaded_file($tmpFile, "assets/img/" . $namaFileBaru);
+        // return $namaFileBaru;
+    }
+
+    //mengkompres gambar agar tidak lebih dari 2 mb
+    public function compressImage($source, $ekstensiFile)
+    {
+        // Buat gambar berdasarkan tipe file
+        if ($ekstensiFile === "jpg" || $ekstensiFile === "jpeg") {
+
+            $image = imagecreatefromjpeg($source);
+        } elseif ($ekstensiFile === "png") {
+
+            $image = imagecreatefrompng($source);
+        } elseif ($ekstensiFile === "webp") {
+
+            $image = imagecreatefromwebp($source);
+        } else {
+
+            return $source; // Jika tipe file tidak didukung, kembalikan file asli
+        }
+
+        // Tentukan jalur sementara untuk file terkompresi
+        $compressedFile = "temp_" . uniqid() . "." . $ekstensiFile;
+        // var_dump($compressedFile);
+        // die;
+
+        // Simpan gambar dengan kualitas yang lebih rendah (kompresi)
+        if ($ekstensiFile === "jpg" || $ekstensiFile === "jpeg") {
+            imagejpeg($image, $compressedFile, 70); // Kompresi 70%
+        } elseif ($ekstensiFile === "png") {
+            imagepng($image, $compressedFile, 9); // Kompresi maksimal untuk PNG
+        } elseif ($ekstensiFile === "webp") {
+            imagewebp($image, $compressedFile, 70); // Kompresi 70%
+        }
+
+        // Hapus dari memori
+        imagedestroy($image);
+
+        // Kembalikan jalur file terkompresi
+        return $compressedFile;
     }
 
     public function rateFormatting($data)

@@ -181,7 +181,7 @@ $format = new transaksiController();
                                         </h4>
                                         <div class="row">
                                             <div class="col-6">
-                                                <p class="color-secondary"><?= $row["tgl_transaksi"] ?></p>
+                                                <p class="color-secondary"><?= $row["tgl_pemesanan"] ?></p>
                                                 <p class="color-secondary"><?= $row["jumlah_barang"] ?> Item</p>
 
                                             </div>
@@ -197,9 +197,9 @@ $format = new transaksiController();
                                                 <?php endif; ?>
                                                 <input type="hidden" value="<?= $row["id_produk"] ?>" name="id_produk">
                                                 <?php if (isset($keyword)) : ?>
-                                                    <a href="index.php?page=transaksi&aksi=rincianPembelian&id=<?= $row["id_pemesanan"] ?>&item=<?= $row["id_item"] ?>&pdk=<?= $row["id_produk"] ?>&tgl=<?= $row["tgl_transaksi"] ?>&p=<?= $kondisiHalaman ?>&keyword=<?= $keyword ?>" type="button" class="btn color-secondary-button fs-6 pt-0 pb-0 ps-4 pe-4">Rincian</a>
+                                                    <a href="index.php?page=transaksi&aksi=rincianPembelian&id=<?= $row["id_pemesanan"] ?>&item=<?= $row["id_item"] ?>&pdk=<?= $row["id_produk"] ?>&tgl=<?= $row["tgl_pemesanan"] ?>&p=<?= $kondisiHalaman ?>&keyword=<?= $keyword ?>" type="button" class="btn color-secondary-button fs-6 pt-0 pb-0 ps-4 pe-4">Rincian</a>
                                                 <?php else : ?>
-                                                    <a href="index.php?page=transaksi&aksi=rincianPembelian&id=<?= $row["id_pemesanan"] ?>&item=<?= $row["id_item"] ?>&pdk=<?= $row["id_produk"] ?>&tgl=<?= $row["tgl_transaksi"] ?>&p=<?= $kondisiHalaman ?>" type="button" class="btn color-secondary-button fs-6 pt-0 pb-0 ps-4 pe-4">Rincian</a>
+                                                    <a href="index.php?page=transaksi&aksi=rincianPembelian&id=<?= $row["id_pemesanan"] ?>&item=<?= $row["id_item"] ?>&pdk=<?= $row["id_produk"] ?>&tgl=<?= $row["tgl_pemesanan"] ?>&p=<?= $kondisiHalaman ?>" type="button" class="btn color-secondary-button fs-6 pt-0 pb-0 ps-4 pe-4">Rincian</a>
                                                 <?php endif; ?>
                                                 <button type="submit" type="button" class="btn color-primary-button fs-6 pt-0 pb-0 ps-3 pe-3">Pesan Lagi</button>
                                                 </form>

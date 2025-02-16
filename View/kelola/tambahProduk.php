@@ -90,6 +90,12 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a class="sidebar-link" href="index.php?page=pengiriman&aksi=radiusPengiriman">
+                            <i class="color-third" data-feather="map-pin"></i>
+                            <strong>Radius Pengiriman</strong>
+                        </a>
+                    </li>
+                    <!-- <li class="sidebar-item">
                         <a class="sidebar-link" href="index.html">
                             <i class="icon-bantuan"></i>
                             <strong>Kelola Bantuan</strong>
@@ -100,7 +106,7 @@
                             <i class="icon-riwayat"></i>
                             <strong>Riwayat Pembaruan</strong>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </nav>

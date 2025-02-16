@@ -94,6 +94,12 @@ $format = new adminController();
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a class="sidebar-link" href="index.php?page=pengiriman&aksi=radiusPengiriman">
+                            <i class="color-third" data-feather="map-pin"></i>
+                            <strong>Radius Pengiriman</strong>
+                        </a>
+                    </li>
+                    <!-- <li class="sidebar-item">
                         <a class="sidebar-link" href="index.html">
                             <i class="icon-bantuan"></i>
                             <strong>Kelola Bantuan</strong>
@@ -104,7 +110,7 @@ $format = new adminController();
                             <i class="icon-riwayat"></i>
                             <strong>Riwayat Pembaruan</strong>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </nav>
@@ -139,8 +145,8 @@ $format = new adminController();
             <main class="content">
                 <div class="container-fluid p-0">
                     <h1 class="mb-3 color-secondary"><strong>Dashboard</strong></h1>
-                    <div class="row align-items-start justify-content-between">
-                        <div class="col-sm-4">
+                    <div class="row">
+                        <div class="col-sm-4 col-12">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
@@ -165,7 +171,7 @@ $format = new adminController();
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 col-12">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
@@ -190,16 +196,40 @@ $format = new adminController();
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col mt-0">
+                                            <!-- <h5 class="card-title">Ulasan Produk</h5> -->
+                                            <h5 class="card-title">Lihat</h5>
+                                        </div>
+
+                                        <div class="col-auto">
+                                            <div class="stat text-primary">
+                                                <i class="icon-dashboard ic-ulasan"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <h1 class="mt-1 mb-3">
+                                        3 <span class="text-muted fs-4">Ulasan Baru</span>
+                                    </h1> -->
+                                    <h2 class="mt-1 mb-3">Ulasan Produk</h2>
+                                    <div class="mb-0">
+                                        <a href="index.php?page=ulasan&aksi=view&idkategori=1" class="nav-link color-third d-sm-inline-block"><span>Selengkapnya</span>
+                                            <li data-feather="chevron-right"></li>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-12">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col mt-0">
                                             <h5 class="card-title">Pendapatan</h5>
                                         </div>
-
                                         <div class="col-auto">
                                             <div class="stat text-primary">
                                                 <i class="icon-dashboard ic-uang"></i>
@@ -217,9 +247,7 @@ $format = new adminController();
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row align-items-end justify-content-between">
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 col-12">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
@@ -243,27 +271,27 @@ $format = new adminController();
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 col-12">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col mt-0">
                                             <!-- <h5 class="card-title">Ulasan Produk</h5> -->
-                                            <h5 class="card-title">Lihat</h5>
+                                            <h5 class="card-title">Batas Radius Pengiriman</h5>
                                         </div>
 
                                         <div class="col-auto">
                                             <div class="stat text-primary">
-                                                <i class="icon-dashboard ic-ulasan"></i>
+                                                <i class="color-third" data-feather="map-pin"></i>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- <h1 class="mt-1 mb-3">
                                         3 <span class="text-muted fs-4">Ulasan Baru</span>
                                     </h1> -->
-                                    <h2 class="mt-1 mb-3">Ulasan Produk</h2>
+                                    <h1 class="mt-1 mb-3"><?=$ketentuanRadius["radius_km"]?> <span class="text-muted fs-4"> Kilometer</span></h1>
                                     <div class="mb-0">
-                                        <a href="index.php?page=ulasan&aksi=view&idkategori=1" class="nav-link color-third d-sm-inline-block"><span>Selengkapnya</span>
+                                        <a href="index.php?page=pengiriman&aksi=radiusPengiriman" class="nav-link color-third d-sm-inline-block"><span>Selengkapnya</span>
                                             <li data-feather="chevron-right"></li>
                                         </a>
                                     </div>

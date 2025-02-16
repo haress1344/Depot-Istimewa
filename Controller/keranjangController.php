@@ -2,13 +2,14 @@
 
 class keranjangController
 {
-    private $keranjang, $kategori, $produk, $ulasan;
+    private $keranjang, $kategori, $produk, $ulasan, $pengiriman;
     public function __construct()
     {
         $this->keranjang = new keranjangModel();
         $this->kategori = new kategoriModel();
         $this->produk = new produkModel();
         $this->ulasan = new ulasanModel();
+        $this->pengiriman = new pengirimanModel();
     }
 
     public function view()
@@ -17,10 +18,14 @@ class keranjangController
         $kategori = $this->kategori->viewAllKategori();
         $idKeranjang = $this->keranjang->getKeranjang($idPelanggan);
         $idKeranjang = $idKeranjang[0]["id_keranjang"];
+
+        $this->pengiriman->prosesUpdateTglPermintaan($idKeranjang);
+
         $keranjang = $this->keranjang->getItemKeranjang($idPelanggan, $idKeranjang);
         $jumItem = $this->keranjang->getJumItemKeranjang($idPelanggan, $idKeranjang);
         $totalProduk = $this->keranjang->getTotalProduk($idPelanggan, $idKeranjang);
         $totalHarga = $this->keranjang->getTotalHarga($idPelanggan, $idKeranjang);
+
 
         require_once("View/loginpelanggan/keranjang.php");
     }
@@ -64,6 +69,9 @@ class keranjangController
                 if (isset($_GET["keyword"])) {
                     $keyword = $_GET["keyword"];
                     header("location: index.php?page=pelanggan&aksi=menu&keyword=$keyword");
+                } else if (isset($_GET["id"])) {
+                    $id = $_GET["id"];
+                    header("location: index.php?page=transaksi&aksi=rincianPembelian&id=$id");
                 } else {
                     header("location: index.php?page=pelanggan&aksi=menu");
                 }
@@ -77,6 +85,10 @@ class keranjangController
                 $halaman = $_GET["p"];
                 $_SESSION["success_alert"] = FALSE;
                 header("location: index.php?page=transaksi&aksi=view&p=$halaman");
+            } else if (isset($_GET["id"])) {
+                $id = $_GET["id"];
+                $_SESSION["success_alert"] = FALSE;
+                header("location: index.php?page=transaksi&aksi=rincianPembelian&id=$id");
             } else {
                 $_SESSION["success_alert"] = FALSE;
                 header("location: index.php?page=pelanggan&aksi=menu");
@@ -118,5 +130,11 @@ class keranjangController
                 document.location.href= 'index.php?page=keranjang&aksi=view';
             </script>";
         }
+    }
+
+    public function formatTgl($tgl_pemesanan)
+    {
+        $format = $this->keranjang->dateFormatting($tgl_pemesanan);
+        return $format;
     }
 }
