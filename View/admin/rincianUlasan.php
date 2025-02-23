@@ -24,6 +24,8 @@ $tglUlasan = new ulasanController();
     <link href="assets/css/app.css" rel="stylesheet" />
     <link href="assets/css/styleku.css?v=2" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+    <!-- icon -->
+    <link rel="shortcut icon" href="assets/img/logo.png">
 </head>
 
 <body>

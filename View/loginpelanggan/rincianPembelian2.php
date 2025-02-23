@@ -28,6 +28,8 @@ $ulasan = new ulasanController();
     <!-- CSS Custom -->
     <link rel="stylesheet" href="assets/css/styleku.css?" />
     <!-- <link rel="stylesheet" href="assets/css/style.css?" /> -->
+     <!-- icon -->
+    <link rel="shortcut icon" href="assets/img/logo.png">
 
     <title><?= $_SESSION["pelanggan"]["nama_user"] ?> || Rincian Pembelian Depot Istimewa Lawang</title>
 </head>

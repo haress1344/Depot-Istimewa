@@ -26,6 +26,8 @@ $harga = new pelangganController();
     <link href="assets/css/bootstrap.min.css?v=2" rel="stylesheet">
     <!-- CSS Custom -->
     <link rel="stylesheet" href="assets/css/styleku.css?=2" />
+    <!-- icon -->
+    <link rel="shortcut icon" href="assets/img/logo.png">
 
     <title><?= $_SESSION["pelanggan"]["nama_user"] ?> || Keranjang Depot Istimewa Lawang</title>
 </head>

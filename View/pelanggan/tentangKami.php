@@ -26,6 +26,8 @@
     <!-- <link rel="stylesheet" href="assets/css/style.css?v=2" /> -->
     <!-- Animated AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- icon -->
+    <link rel="shortcut icon" href="assets/img/logo.png">
 
     <title>Depot Istimewa Lawang</title>
 </head>

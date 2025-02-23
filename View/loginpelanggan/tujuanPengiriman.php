@@ -31,6 +31,8 @@ $formatHarga = new pengirimanController();
     <link href="assets/css/bootstrap.min.css?v=2" rel="stylesheet">
     <!-- CSS Custom -->
     <link rel="stylesheet" href="assets/css/styleku.css?" />
+    <!-- icon -->
+    <link rel="shortcut icon" href="assets/img/logo.png">
 
     <title><?= $_SESSION["pelanggan"]["nama_user"] ?> || Tujuan Pengiriman Depot Istimewa Lawang</title>
 </head>

@@ -27,6 +27,8 @@ $format = new transaksiController();
     <!-- CSS Custom -->
     <link rel="stylesheet" href="assets/css/styleku.css?v=10" />
     <!-- <link rel="stylesheet" href="assets/css/style.css?" /> -->
+     <!-- icon -->
+    <link rel="shortcut icon" href="assets/img/logo.png">
 
     <title><?= $_SESSION["pelanggan"]["nama_user"] ?> || Tambah Ulasan Depot Istimewa Lawang</title>
 </head>

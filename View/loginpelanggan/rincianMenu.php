@@ -27,6 +27,8 @@ $tglUlasan = new ulasanController();
     <link href="assets/css/bootstrap.min.css?v=2" rel="stylesheet">
     <!-- CSS Custom -->
     <link rel="stylesheet" href="assets/css/styleku.css?=8" />
+    <!-- icon -->
+    <link rel="shortcut icon" href="assets/img/logo.png">
 
     <title><?= $_SESSION["pelanggan"]["nama_user"] ?> || Menu Depot Istimewa Lawang</title>
 </head>
